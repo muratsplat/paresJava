@@ -17,7 +17,7 @@ public class ParserTest {
         String raw;
         raw = new String(this.simplePARes(), Charset.defaultCharset());
 
-        Parser pares = new Parser("asasasas");
+        Parser pares = new Parser(raw);
         assertTrue(pares.parse());
     }
 
