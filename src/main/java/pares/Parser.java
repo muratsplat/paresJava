@@ -26,11 +26,9 @@ public class Parser
         try {
             toByte = Parser.decodeBase64(this.raw);
             decZip = Parser.unzip(toByte);
-        } catch (DataFormatException e) {
+        } catch (IllegalArgumentException e) {
             return false;
-        } catch (IllegalFormatException e) {
-            return false;
-        } catch (IOException e) {
+        } catch (Exception e) {
             return false;
         }
 

@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class ParserTest {
 
@@ -15,7 +15,7 @@ public class ParserTest {
     public void evaluatesExpression() throws IOException
     {
         String raw;
-        raw = new String(this.simplePARes(), Charset.defaultCharset());
+        raw = new String(this.simplePARes(), StandardCharsets.UTF_8);
 
         Parser pares = new Parser(raw);
         assertTrue(pares.parse());
