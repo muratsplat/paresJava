@@ -1,5 +1,8 @@
 package pares;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.w3c.dom.Document;
+
 public class Model {
 
     private int acquirerBIN;
@@ -14,6 +17,8 @@ public class Model {
     private char txECI;
     private char txCAVV;
     private char txCAVVAlgorithm;
+    private String rawXml;
+    private Document dom;
 
     public void setAcquirerBIN(int bin)
     {
@@ -135,4 +140,33 @@ public class Model {
         return this.txCAVVAlgorithm;
     }
 
+    public void setRawXml(String xml)
+    {
+        this.rawXml = xml;
+    }
+
+    public String getRawXml(String xml)
+    {
+        return this.rawXml;
+    }
+
+    public Document getDOM()
+    {
+        return dom;
+    }
+
+    public void setDOM(Document domDoc)
+    {
+        dom = domDoc;
+    }
+    
+    public Model(Document dom)
+    {
+        this.setDOM(dom);
+    }
+
+    public void init() throws Exception
+    {
+
+    }
 }
