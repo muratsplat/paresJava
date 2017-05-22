@@ -32,7 +32,7 @@ public class Parser
         toByte = Parser.decodeBase64(this.raw);
         decZip = Parser.unzip(toByte);
         xmlAsString = new String(decZip);
-        pares = new Model();
+        Model pares = new Model();
         Document domDoc = newDOMBuilder(xmlAsString);
         pares.setDOM(domDoc);
     }

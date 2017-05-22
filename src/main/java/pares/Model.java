@@ -159,10 +159,14 @@ public class Model {
     {
         dom = domDoc;
     }
-    
+
     public Model(Document dom)
     {
         this.setDOM(dom);
+    }
+    public Model()
+    {
+
     }
 
     public void init() throws Exception
