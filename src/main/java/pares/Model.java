@@ -2,20 +2,21 @@ package pares;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 public class Model {
 
     private int acquirerBIN;
     private char merchantID;
-    private char xid;
+    private String xid;
     private char date;
     private int amount;
     private int currency;
     private int exponent;
     private char txTime;
     private char txStatus;
-    private char txECI;
-    private char txCAVV;
+    private String txECI;
+    private String txCAVV;
     private char txCAVVAlgorithm;
     private String rawXml;
     private Document dom;
@@ -40,12 +41,12 @@ public class Model {
         return this.merchantID;
     }
 
-    public void setXID( char XID)
+    public void setXID( String XID)
     {
         this.xid = XID;
     }
 
-    public char getXID()
+    public String getXID()
     {
         return this.xid;
     }
@@ -110,22 +111,22 @@ public class Model {
         return this.txStatus;
     }
 
-    public void setTXCAVV(char $txCAVV)
+    public void setTXCAVV(String txCAVV)
     {
         this.txCAVV = txCAVV;
     }
 
-    public char getTXCAVV()
+    public String getTXCAVV()
     {
         return this.txCAVV;
     }
 
-    public void setTXECI(char txECI)
+    public void setTXECI(String txECI)
     {
         this.txECI = txECI;
     }
 
-    public char getTXECI()
+    public String getTXECI()
     {
         return this.txECI;
     }
@@ -164,13 +165,23 @@ public class Model {
     {
         this.setDOM(dom);
     }
-    public Model()
+
+    protected Model()
     {
 
     }
 
     public void init() throws Exception
     {
+        setXID(
+                dom.getElementsByTagName("xid").item(0).getTextContent()
+        );
+        setTXECI(
+                dom.getElementsByTagName("eci").item(0).getTextContent()
+        );
 
+        setTXCAVV(
+                dom.getElementsByTagName("cavv").item(0).getTextContent()
+        );
     }
 }
