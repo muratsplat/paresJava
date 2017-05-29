@@ -170,7 +170,6 @@ public class Model {
     {
 
     }
-    }
 
     public void init() throws Exception
     {
