@@ -30,7 +30,7 @@ public class ParserTest {
         );
     }
 
-    @Test(expected = ParesExc.class)
+    @Test
     public void testExpectedFailed() throws Exception
     {
 
