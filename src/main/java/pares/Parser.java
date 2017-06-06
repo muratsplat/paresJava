@@ -4,15 +4,11 @@ import org.w3c.dom.*;
 import javax.xml.parsers.*;
 import java.io.*;
 import java.io.IOException;
-import java.rmi.activation.ActivationGroup_Stub;
 import java.util.Base64;
 import java.util.Base64.*;
 import java.io.ByteArrayOutputStream;
-import java.util.IllegalFormatException;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
-import pares.Model;
-
 
 public class Parser
 {
@@ -29,15 +25,20 @@ public class Parser
     {
         byte[] toByte;
         byte[] decZip;
+        try {
+            toByte = Parser.decodeBase64(this.raw);
+            decZip = Parser.unzip(toByte);
+            xmlAsString = new String(decZip);
+            pares = new Model();
+            //System.out.print(xmlAsString);
+            Document domDoc = newDOMBuilder(xmlAsString);
+            pares.setDOM(domDoc);
+            pares.init();
+        } catch (Exception e) {
+            String errMsg = new String(e.getMessage());
+            throw new ParesExc(errMsg, e);
+        }
 
-        toByte = Parser.decodeBase64(this.raw);
-        decZip = Parser.unzip(toByte);
-        xmlAsString = new String(decZip);
-        pares = new Model();
-        //System.out.print(xmlAsString);
-        Document domDoc = newDOMBuilder(xmlAsString);
-        pares.setDOM(domDoc);
-        pares.init();
         return pares;
     }
 

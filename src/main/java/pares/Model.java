@@ -1,8 +1,6 @@
 package pares;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 
 public class Model {
 
@@ -161,27 +159,29 @@ public class Model {
         dom = domDoc;
     }
 
-    public Model(Document dom)
+    public Model(Document dom) throws Exception
     {
         this.setDOM(dom);
+        this.init();
     }
 
-    protected Model()
+    public Model()
     {
-
     }
 
     public void init() throws Exception
     {
-        setXID(
-                dom.getElementsByTagName("xid").item(0).getTextContent()
-        );
-        setTXECI(
-                dom.getElementsByTagName("eci").item(0).getTextContent()
-        );
 
-        setTXCAVV(
-                dom.getElementsByTagName("cavv").item(0).getTextContent()
-        );
+            setXID(
+                    dom.getElementsByTagName("xid").item(0).getTextContent()
+            );
+            setTXECI(
+                    dom.getElementsByTagName("eci").item(0).getTextContent()
+            );
+
+            setTXCAVV(
+                    dom.getElementsByTagName("cavv").item(0).getTextContent()
+            );
+
     }
 }
