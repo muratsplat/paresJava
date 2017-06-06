@@ -30,10 +30,9 @@ public class ParserTest {
         );
     }
 
-    @Test
+    @Test(expected = ParesExc.class)
     public void testExpectedFailed() throws Exception
     {
-
         String broken = new String("adasad");
         Parser p = new Parser(broken);
         p.Parse();
